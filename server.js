@@ -2,28 +2,64 @@ const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { buildSchema } = require("graphql");
 
-// Define schema
+// 🔧 Mock Data
+const users = [
+  {
+    id: 1,
+    name: "Kirsten",
+    posts: [
+      {
+        id: 101,
+        title: "GraphQL is cool",
+        comments: [
+          { text: "Agreed!" },
+          { text: "Very useful." }
+        ]
+      },
+      {
+        id: 102,
+        title: "REST is fine too",
+        comments: []
+      }
+    ]
+  }
+];
+
+// 📐 GraphQL Schema
 const schema = buildSchema(`
+  type Comment {
+    text: String
+  }
+
+  type Post {
+    title: String
+    comments: [Comment]
+  }
+
+  type User {
+    id: ID
+    name: String
+    posts: [Post]
+  }
+
   type Query {
-    hello: String
-    greet(name: String!): String
+    user(id: ID!): User
   }
 `);
 
-// Define resolvers
+// 🚀 Resolvers
 const root = {
-  hello: () => "Hello, world!",
-  greet: ({ name }) => `Hello, ${name}!`,
+  user: ({ id }) => users.find(u => u.id == id),
 };
 
-// Create Express app
+// 🌐 Server
 const app = express();
 app.use("/graphql", graphqlHTTP({
-  schema: schema,
+  schema,
   rootValue: root,
-  graphiql: true // Enable GraphiQL GUI
+  graphiql: true
 }));
 
 app.listen(4000, () => {
-  console.log("Server running at http://localhost:4000/graphql");
+  console.log("🚀 GraphQL Server ready at http://localhost:4000/graphql");
 });
