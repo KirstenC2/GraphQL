@@ -22,6 +22,25 @@ const users = [
         comments: []
       }
     ]
+  },
+  {
+    id: 2,
+    name: "KKC2",
+    posts: [
+      {
+        id: 101,
+        title: "GraphQL is cool",
+        comments: [
+          { text: "Agreed!" },
+          { text: "Very useful." }
+        ]
+      },
+      {
+        id: 102,
+        title: "REST is fine too",
+        comments: []
+      }
+    ]
   }
 ];
 
