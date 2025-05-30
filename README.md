@@ -50,7 +50,7 @@ If you wanna get selected field:
 
 ## Best Cases to Use GraphQL
 ### 1. Complex Frontend Apps with Nested Data
-Your UI needs deeply nested, relational data (e.g., user → posts → comments).
+When UI needs deeply nested, relational data (e.g., user → posts → comments).
 
 You want to fetch exactly what the UI needs in one request (no over/under fetching).
 
@@ -72,3 +72,23 @@ GraphQL lets each client get tailored data with a single endpoint.
 Backend combines data from REST APIs, databases, third-party services.
 
 GraphQL provides a unified schema for clients.
+
+
+## How GraphQL works?
+1. Client sends one POST request to `/graphql` endpoint with a query string.
+2. Server parses the query, validates against the schema.
+3. Server calls resolvers for requested fields.
+4. Server assembles response with only requested data.
+5. Client receives JSON matching the query shape.
+
+
+| Aspect         | REST                       | GraphQL                                 |
+| -------------- | -------------------------- | --------------------------------------- |
+| Endpoints      | Multiple per resource      | Single `/graphql` endpoint              |
+| Response Shape | Fixed by server            | Defined by client query                 |
+| Over-fetching  | Common problem             | Avoided                                 |
+| Under-fetching | Multiple calls needed      | One call sufficient                     |
+| Versioning     | Version APIs (v1, v2, ...) | No versioning needed — schema evolves   |
+| Caching        | Built-in HTTP caching      | More complex, needs client-side caching |
+| Learning Curve | Easier to start            | Steeper learning curve                  |
+| Tooling        | Mature                     | Growing and powerful                    |
