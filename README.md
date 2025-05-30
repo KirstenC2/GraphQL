@@ -49,26 +49,26 @@ If you wanna get selected field:
 
 
 ## Best Cases to Use GraphQL
-1. Complex Frontend Apps with Nested Data
+### 1. Complex Frontend Apps with Nested Data
 Your UI needs deeply nested, relational data (e.g., user → posts → comments).
 
 You want to fetch exactly what the UI needs in one request (no over/under fetching).
 
 Example: Social media apps, dashboards, or admin panels.
 
-2. Rapid Frontend Iteration & Flexibility
+### 2. Rapid Frontend Iteration & Flexibility
 Frontend teams want to control the data shape without backend changes.
 
 Frequent UI changes require flexible data fetching.
 
 Example: React or mobile apps with evolving data requirements.
 
-3. Multiple Clients with Different Data Needs
+### 3. Multiple Clients with Different Data Needs
 One backend serving web, mobile, desktop apps with different data needs.
 
 GraphQL lets each client get tailored data with a single endpoint.
 
-4. Aggregating Multiple Data Sources
+### 4. Aggregating Multiple Data Sources
 Backend combines data from REST APIs, databases, third-party services.
 
 GraphQL provides a unified schema for clients.
